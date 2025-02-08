@@ -1,0 +1,15 @@
+spring:
+  redis:
+    host: ${REDIS_HOST}
+    port: 18524
+    password: ${REDIS_PASSWORD}
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
+      database: journaldb
+      auto-index-creation: true
+
+server:
+  port: 8080
+  servlet:
+    context-path: /journal

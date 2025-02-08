@@ -1,0 +1,42 @@
+spring:
+  kafka:
+    bootstrap-servers: pkc-l7pr2.ap-south-1.aws.confluent.cloud:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer:  org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: weekly-sentiment-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: net.engineeringdigest.journalApp.model
+    properties:
+      security:
+        protocol: SASL_SSL
+      sasl:
+        mechanism: PLAIN
+        jaas:
+          config: org.apache.kafka.common.security.plain.PlainLoginModule required username='LNBBK3BSYCWRKZ25' password='qwPd91ssO4fYxvdeCgM81qyNYog6EQC9cLezEtH/+RUImGmY6MKN6mn0n/mNrZ6M';
+      session:
+        timeout:
+          ms: 45000
+  profiles:
+    active: dev
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: alpishjain69@gmail.com
+    password: rhxf hmoa qira mmsv
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+weather:
+  api:
+    key: 2c121a00aa518370c03efb4cc7cf8fad
